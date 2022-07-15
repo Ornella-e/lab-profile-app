@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../constants.js";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
 	const [username, setUsername] = useState("")
@@ -11,6 +12,7 @@ const Signup = () => {
 	const handlePassword = (e) => setPassword(e.target.value)
     const handleCampus = (e) => setCampus(e.target.value)
     const handleCourse = (e) => setCourse(e.target.value)
+	const navigate=useNavigate();
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
@@ -20,7 +22,7 @@ const Signup = () => {
                 campus,
                 course,
 			})
-			console.log(data)
+			navigate('/auth/login');
 		} catch (error) {}
 	}
 	return (

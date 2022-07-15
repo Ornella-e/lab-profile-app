@@ -9,14 +9,10 @@ export default function HomePage() {
     <div className='Back' >
 
 		<h1>IronProfile</h1>
-      <ul>
-				<li>
-					<Link to={"/auth/signup"} className="Sign">Signup</Link>
-				</li>
-				<li >
-					<Link to={"/auth/signin"} className="Sign">Signin</Link>
-				</li>
-			</ul>
+		<p>Today we will create an app with authoritation, adding some style!</p>
+			<Link to={"/auth/signup"} className="Sign">Signup</Link>
+			
+			<Link to={"/auth/login"} className="Sign">Signin</Link>		
 
     </div>
 	

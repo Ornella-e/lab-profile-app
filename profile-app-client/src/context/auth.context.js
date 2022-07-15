@@ -1,7 +1,7 @@
-import { createContext, useState, useEffect } from "react"
+import React, { createContext, useState, useEffect } from "react"
 import axios from "axios";
 import { API_URL } from "../constants";
-const AuthContext = createContext()
+const AuthContext = React.createContext();
 
 const AuthProviderWrapper = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +16,7 @@ const AuthProviderWrapper = (props) => {
         const storedToken = localStorage.getItem("authToken");
         if (storedToken) {
           axios.get(
-            `${API_URL}/auth/verify`, 
+            `${API_URL}/api/auth/verify`, 
             { headers: { Authorization: `Bearer ${storedToken}`} }
           )
           .then((response) => {

@@ -13,8 +13,8 @@ function App() {
       <Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/auth/signup" element={<Signup />} />
-        <Route path="/auth/signin" element={<Signin />} />
-        <Route path="/api/users" element={<Profile />} />
+        <Route path="/auth/login" element={<Signin />} />
+        <Route path="/auth/user" element={<Profile />} />
 			</Routes>
     </div>
   );

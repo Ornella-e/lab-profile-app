@@ -1,7 +1,23 @@
-import React from 'react'
+import axios from 'axios';
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
+import { API_URL } from '../constants';
 
 export default function Profile(props) {
+  const [state, setState] = useState("");
+
+  //state= {selectedFile: null} 
+  const fileChangedHandler=(event)=>{
+    this.setState ({selectedFile: event.target.files[0]})
+  }
+  const uploadHandler = ()=> {
+    const formData = new FormData()
+    formData.append(
+      this.state.selectedFile
+    )
+    axios.post(`${API_URL}`, formData) }
+  
+  
   return (
     <div className='Back'>
       <h1>Profile</h1>
@@ -10,7 +26,10 @@ export default function Profile(props) {
       <p>Course {props.course}</p>
       <Link to={"/auth/logout"} >Logout</Link>
       <img src={props.image}/>
-      <Link to={"/auth/logout"} >Edit Photo</Link>
+      <input type="file" onChange={fileChangedHandler}/>
+      <button onClick={uploadHandler}></button>
+
+      
     </div>
   )
 }

@@ -3,7 +3,7 @@ import axios from "axios"
 import { API_URL } from "../constants.js";
 import { AuthContext } from "../context/auth.context.js";
 import { useNavigate } from "react-router-dom";
-
+import { logIn } from '../auth.service'
 
 
 const Signin = () => {
@@ -16,12 +16,13 @@ const Signin = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const { data } = await axios.post(`${API_URL}/api/auth/login`, {
-				username,
-				password,
-			})
+			//const { data } = await axios.post(`${API_URL}/api/auth/login`, {
+			//	username,
+			//	password,
+			//})
+			const {data } = await logIn({ username, password});
 			localStorage.setItem("authToken", data)
-			navigate('/'); 
+			navigate('/auth/user'); 
 		} catch (error) {}
 	}
 	return (

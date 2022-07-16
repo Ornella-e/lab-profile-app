@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { API_URL } from "../constants.js";
 import { useNavigate } from "react-router-dom";
+import { signUp } from '../auth.service'
 
 const Signup = () => {
 	const [username, setUsername] = useState("")
@@ -16,13 +17,14 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const { data } = await axios.post(`${API_URL}/auth/signup`, {
-				username,
-				password,
-                campus,
-                course,
-			})
-			navigate('/auth/login');
+			// const { data } = await axios.post(`${API_URL}/api/auth/signup`, {
+			// 	username,
+			// 	password,
+            //     campus,
+            //     course,
+			// })
+			const {data } = await signUp({ username, password, campus, course});
+			navigate("/auth/login");
 		} catch (error) {}
 	}
 	return (

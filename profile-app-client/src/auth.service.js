@@ -14,9 +14,9 @@ const signUp = (newUser) => {
     .then((res) => res.data)
     .catch(errorHandler);
 };
-const logIn = () => {
+const logIn = (loggeduser) => {
   return service
-    .get('/auth/login')
+    .get('/auth/login', loggeduser)
     .then((res) => res.data)
     .catch(errorHandler);
 };

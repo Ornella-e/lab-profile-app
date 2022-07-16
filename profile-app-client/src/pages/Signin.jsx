@@ -16,11 +16,11 @@ const Signin = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			//const { data } = await axios.post(`${API_URL}/api/auth/login`, {
-			//	username,
-			//	password,
-			//})
-			const {data } = await logIn({ username, password});
+			const { data } = await axios.post(`${API_URL}/api/auth/login`, {
+				username,
+				password,
+			})
+		//	const {data } = await logIn({ username, password});
 			localStorage.setItem("authToken", data)
 			navigate('/auth/user'); 
 		} catch (error) {}
